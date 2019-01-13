@@ -15,8 +15,12 @@
 
 .drag ul li a{
         color:white;
-        font-size: 18px;
-        padding: 0 15px;
+        font-size: 16px;
+        padding: 0 30px;
+}
+
+.rotate {
+  transform: rotate(100deg);
 }
 
 .form2{
@@ -31,4 +35,12 @@
 }
 .gap{
     padding: 0 40px 0 20px;
+}
+
+.text-center{
+  padding-top: 50px;
+}
+
+.btn{
+  margin-left: 35%;
 }

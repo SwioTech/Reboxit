@@ -6,8 +6,12 @@
 .drag ul li a{
     color:white;
     font-size: 16px;
-    padding: 0 15px;
+    padding: 0 30px;
 }
 .poi{
     cursor: pointer;
 }
+
+.rotate {
+    transform: rotate(100deg);
+  }

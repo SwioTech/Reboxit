@@ -27,9 +27,24 @@
     padding: 50px 60px ;
     margin-top: 30px;
     background:white;
-    opacity: 0.5;
+    /* opacity: 0.5; */
 
 }
 .poi{
     cursor:pointer;
+}
+
+.text-center{
+  padding-top: 5%;
+}
+
+.form-group{
+  margin-top: 7%;
+}
+
+.form2{
+  margin-top: 15%;
+}
+.btn{
+  margin-top: 5%;
 }

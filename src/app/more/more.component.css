@@ -1,8 +1,16 @@
 .drag ul li a{
     color:white;
-    font-size: 14px;
-    padding: 0 15px;
+    font-size: 16px;
+    padding: 0 30px;
 }
 .bg1{
     background: #005f33;
 }
+
+.poi{
+    cursor: pointer;
+}
+
+.rotate {
+    transform: rotate(100deg);
+  }

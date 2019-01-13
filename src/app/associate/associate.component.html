@@ -3,15 +3,15 @@
   <div class="container">
       <a routerLink="/landing"> <img src="../assets/images/Categories/logo1.png"></a>
   </div>
-  
+
     <!-----Navigation Starts Here-->
-  
+
   <nav class="navbar navbar-expand-sm navbar-light bg1">
       <a class="navbar-brand" href="#"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    
+
       <div class="collapse navbar-collapse  drag" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto ">
               <li class="nav-item poi">
@@ -30,48 +30,48 @@
                 <a class="nav-link" >Help</a>
            </li>
            <li class="nav-item poi">
-                <a class="nav-link" ><i class="fas fa-phone"></i></a>
+                <a class="nav-link rotate" ><i class="fas fa-phone"></i></a>
             </li>
             </ul>
       </div>
     </nav>
-    
+
     <!---Form Starts Here-->
     <div class="bg">
       <div class="">
-  
-       
+
+
       </div>
         <div class="row">
             <div class="col-md-3 col-sm-3 col-xs-10"></div>
             <div class="col-md-6 col-sm-6 col-xs-12">
-            
-        
+
+
        <!---Associate Form starts here-->
-       
-             <div class=""> <h4 class="text-center" style="color:white;">Associates</h4>
-              
+
+             <div class=""> <h2 class="text-center" style="color:white;">Associates</h2>
+
               <form [formGroup]="associateForm" (ngSubmit)="onSubmit()" class="form-row form2">
 
                   <div class="form-group col-md-6 gap">
-                   
-                      <select formControlName="usertype"  class="form-control form-control-sm" name="usertype" id="utype" > 
-                        <option selected > -Please elect-  </option> 
-                        <option value="Scrap"> Scrap Dealer  </option>   
+
+                      <select formControlName="usertype"  class="form-control form-control-sm" name="usertype" id="utype" >
+                        <option selected > -Please elect-  </option>
+                        <option value="Scrap"> Scrap Dealer  </option>
                         <option value="Recycler"> Recycler </option>
-                        <option value="Aggregator">Aggregator</option>  
-                        
+                        <option value="Aggregator">Aggregator</option>
+
                       </select>
-                     
+
                    </div>
 
                    <!-- <div *ngIf="associateForm.get('usertype').hasError('required') && associateForm.get('usertype').touched" >
                      usertype is required
                    </div> -->
-                   
+
                 <div class="form-group col-md-6 gap">
-                
-                  <input formControlName="email" type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+
+                  <input formControlName="email" type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
                   <small id="emailHelp" class="form-text text-muted"></small>
                 </div>
 
@@ -83,8 +83,8 @@
                     </div> -->
 
                 <div class="form-group col-md-6 gap">
-                 
-                    <input formControlName="username" type="text" class="form-control form-control-sm" id="exampleInputUsername" aria-describedby="userHelp" placeholder="username">
+
+                    <input formControlName="username" type="text" class="form-control form-control-sm" id="exampleInputUsername" aria-describedby="userHelp" placeholder="Username">
                     <small id="userHelp"></small>
                 </div>
 
@@ -93,8 +93,8 @@
                   </div> -->
 
                 <div class="form-group col-md-6 gap">
-                 
-                  <input formControlName="password" type="password" class="form-control form-control-sm" id="passwordInput" aria-describedby="passHelp" placeholder="password">
+
+                  <input formControlName="password" type="password" class="form-control form-control-sm" id="passwordInput" aria-describedby="passHelp" placeholder="Password">
                   <small id="passHelp" class="form-text text-muted"></small>
                 </div>
                 <!-- <div *ngIf="associateForm.get('password').hasError('required') && associateForm.get('password').touched" class="alert alert-danger">
@@ -103,10 +103,10 @@
                   <div *ngIf="associateForm.get('password').hasError('minlength') " class="alert alert-danger">
                       password must be 8 characters
                     </div> -->
-               
+
                 <div class="form-group col-md-6 gap">
-                  
-                    <input formControlName="companyname" type="text" class="form-control form-control-sm" id="CpasswordInput" aria-describedby="CpassHelp" placeholder="company name">
+
+                    <input formControlName="companyname" type="text" class="form-control form-control-sm" id="CpasswordInput" aria-describedby="CpassHelp" placeholder="Company Name">
                     <small id="CpassHelp" class="form-text text-muted"></small>
                   </div>
                   <!-- <div *ngIf="associateForm.get('companyname').hasError('required') && associateForm.get('companyname').touched" class="alert alert-danger">
@@ -114,50 +114,49 @@
                     </div> -->
 
                   <div class="form-group col-md-6 gap">
-                   
-                    <select formControlName="doctype"  class="form-control form-control-sm" name="doctype" id="dtype" aria-placeholder="Please Select"> 
-                        <option selected value="0"> -Please elect-  </option> 
-                      <option value="Pan"> Pan </option>   
+
+                    <select formControlName="doctype"  class="form-control form-control-sm" name="doctype" id="dtype" aria-placeholder="Please Select">
+                        <option selected value="0"> -Please elect-  </option>
+                      <option value="Pan"> Pan </option>
                       <option value="Lisence"> Lisence </option>
-                      <option value="shopid"> Shop Id</option>  
-                      
+                      <option value="shopid"> Shop Id</option>
+
                     </select>
-                   
+
                   </div>
-                  
+
                     <!-- <div *ngIf="associateForm.get('scrapetype').hasError('required') && associateForm.get('scrapetype').touched " class="alert alert-danger">
                         scarpe type is required
                       </div> -->
                       <div class="form-group col-md-6 gap">
-                        
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1" placeholder="choose file">
+
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" placeholder="Choose File">
                       </div>
-                
+
                   <div class="form-group col-md-6 gap">
-                   
-                      <input formControlName="address" type="text" class="form-control form-control-sm" id="address" aria-describedby="CpassHelp" placeholder="address">
+
+                      <input formControlName="address" type="text" class="form-control form-control-sm" id="address" aria-describedby="CpassHelp" placeholder="Address">
                       <small id="CpassHelp" class="form-text text-muted"></small>
                     </div>
                     <!-- <div *ngIf="associateForm.get('address').hasError('required')&& associateForm.get('address').touched " class="alert alert-danger">
                         address is required
                       </div>
                -->
-                  
-                 
+
+
                   <div class = "row text-center">
                  <button type="submit" class="btn btn-success ">Sign Up</button>
                  </div>
                </form>
-         </div> 
+         </div>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-10"></div>
             </div>
-            
-      
+
+
         </div>
       </div>
 
-    
 
-     
-     
+
+
