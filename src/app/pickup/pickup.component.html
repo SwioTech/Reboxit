@@ -1,0 +1,131 @@
+<div class="">
+  <div class="container">
+    <a routerLink="/landing"> <img src="../assets/images/Categories/logo1.png"></a>
+    
+  
+ </div>
+<!-----Navigation Starts Here-------------------->
+    
+<nav class="navbar navbar-expand-sm navbar-light bg1">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse  drag" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto ">
+        <li class="nav-item poi">
+            <a class="nav-link" routerLink="/pricelist">Price List <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item  poi">
+              <a class="nav-link" routerLink="/myaccount" >My Account</a>
+         </li>
+           <li class="nav-item  poi">
+                <a class="nav-link" routerLink="/cart"><i class="fas fa-shopping-cart"></i></a>
+           </li>
+         <li class="nav-item  poi">
+            <a class="nav-link" >Help</a>
+       </li>
+       <li class="nav-item  poi">
+          <a class="nav-link" routerLink="/design" >Logout</a>
+     </li>
+       <li class="nav-item  poi">
+            <a class="nav-link" ><i class="fas fa-phone"></i></a>
+        </li>
+    </ul>
+  </div>
+</nav>
+
+<!---- Available slots -------------------------->
+       <div class="" style="padding:70px 0;">
+         <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12"></div>
+            <div class="col-md-4 col-sm-4 col-xs-12 " style="border:1px solid black;padding: 30px;background:#fcfcfc;" >
+            
+               <div class="">
+                 <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Available slots:</label>
+                            <select class="form-control form-control-sm" id="exampleFormControlSelect1">
+                              <option>21/12/2018</option>
+                              <option>28/12/2018</option>
+                              
+                            </select>
+                          </div>
+                    </div>
+                 </form>
+
+               </div>
+<!----Address fields -------------------------->
+               <div class="" >
+                  <form [formGroup]="pickupForm" (ngSubmit)="onSubmit()" >
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="pincode">Pincode</label>
+                          <input type="text" formControlName="pincode" class="form-control" id="inputEmail4" placeholder="enter pincode">
+                        </div>
+                        <div *ngIf="pickupForm.get('pincode').hasError('required') && pickupForm.get('pincode').touched " class="alert alert-danger">
+                            pincode is required
+                    </div>
+
+                        <div class="form-group col-md-6">
+                          <label for="location">Location</label>
+                          <input type="password" formControlName="location" class="form-control" id="inputPassword4" placeholder="enter location">
+                        </div>
+                        <div *ngIf="pickupForm.get('location').hasError('required') && pickupForm.get('location').touched " class="alert alert-danger">
+                            location is required
+                      </div>
+
+                      </div>
+                      <div class="form-group">
+                        <label for="add1">Address line1</label>
+                        <input type="text" formControlName="add1" class="form-control" id="inputAddress" placeholder="enter address">
+                      </div>
+                      <div *ngIf="pickupForm.get('add1').hasError('required') && pickupForm.get('add1').touched " class="alert alert-danger">
+                          location is required
+                    </div>
+
+                      <div class="form-group">
+                        <label for="add2">Address 2</label>
+                        <input type="text" formControlName="add2" class="form-control" id="inputAddress2" placeholder="enter address ">
+                      </div>
+                      <div *ngIf="pickupForm.get('add2').hasError('required') && pickupForm.get('add2').touched " class="alert alert-danger">
+                          location is required
+                    </div>
+
+                      
+                        <div class="form-group col-md-6">
+                          <label for="city">City</label>
+                          <input type="text" formControlName="city" class="form-control" id="inputCity" placeholder="enter city">
+                        </div>
+                        <div *ngIf="pickupForm.get('city').hasError('required') && pickupForm.get('city').touched " class="alert alert-danger">
+                            location is required
+                      </div>
+
+                        <div class="form-group col-md-4">
+                          <label for="state">State</label>
+                          <select id="inputState" formControlName="state" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                          </select>
+                        </div>
+                        <div *ngIf="pickupForm.get('state').hasError('required') && pickupForm.get('state').touched " class="alert alert-danger">
+                            location is required
+                      </div>
+                       
+                    
+                      <div class="text-center">
+                         
+                      <button type="submit" class="btn btn-success">
+                          <a routerLink="/collections" style="color:white;text-align:center;text-decoration: none;">Proceed</a></button>
+           
+                      </div>
+               </form>
+               </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12"></div>
+         </div>
+       </div>
+     
+    </div>

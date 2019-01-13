@@ -1,0 +1,34 @@
+/* logo && navigation*/
+.main-height {height: 100%;}
+.bg{
+    background: url("../../assets/login/signup.jpg") no-repeat bottom right ;
+    width: 100%;
+    height: 100%;
+      /* height: calc(100% - 81px);  */
+     /* height: -webkit-calc(100% - 81px);  */
+     background-size: cover;
+
+    }
+    .bg1{
+        background: #3d882f;
+    }
+
+.drag ul li a{
+        color:white;
+        font-size: 18px;
+        padding: 0 15px;
+}
+
+.form2{
+    border:1px solid;
+    padding: 50px 60px ;
+    margin-top: 30px;
+    background: white;
+    opacity: 0.5;
+}
+.poi{
+    cursor:pointer;
+}
+.gap{
+    padding: 0 40px 0 20px;
+}

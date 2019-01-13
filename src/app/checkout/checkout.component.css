@@ -1,0 +1,20 @@
+/* logo && navigation*/
+
+.bg1{
+    background: #3d882f;
+}
+
+.drag ul li a{
+    color:white;
+    font-size: 16px;
+    padding: 0 30px;
+}
+
+.poi{
+cursor: pointer;
+}
+
+/* content */
+.sec{
+border: 1px solid ;
+}
