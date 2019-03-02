@@ -2,7 +2,7 @@
 <div class="main-height">
   <div class="container">
     <a routerLink="/landing"> <img src="../assets/images/Categories/logo1.png"></a>
-
+  
  </div>
   <!-----Navigation Starts Here-->
 
@@ -11,7 +11,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
+  
     <div class="collapse navbar-collapse  drag" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto ">
             <li class="nav-item poi">
@@ -26,96 +26,101 @@
                <li class="nav-item poi">
                     <a class="nav-link" (click)="showAsso()">Associates</a>
                </li>
+               <li class="nav-item poi">
+                <a class="nav-link" routerLink="/signupadmin">Admin Signup</a>
+                </li>
              <li class="nav-item poi">
                 <a class="nav-link" >Help</a>
            </li>
            <li class="nav-item poi">
-                <a class="nav-link rotate" ><i class="fas fa-phone"></i></a>
+                <a class="nav-link" ><i class="fas fa-phone"></i></a>
             </li>
           </ul>
-
-
+    
+    
     </div>
   </nav>
-
+  
   <!---Form Starts Here-->
   <div class="bg">
     <div class="">
 
-
+     
     </div>
       <div class="row">
           <div class="col-md-4 col-sm-4 col-xs-12"></div>
           <div class="col-md-4 col-sm-4 col-xs-12 ">
-
-
+          
+      
      <!---Login Form starts here-->
-
-           <div class="">  <h2 class="text-center" style="color:white;">Sign Up</h2>
-
+     
+           <div class=""> 
+            
               <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="form-group form2">
-
+                  <h4 class="text-center">Register user</h4>
                <div class="form-group ">
                      <!-- <label for="exampleInputEmail1">Select Usertype</label> -->
-                     <select formControlName="usertype"   class="form-control form-control-sm"  name="usertype" id="utype" placeholder="user type">
-                         <option selected value="0"> -Please elect-  </option>
-                         <option value="House_hold "> House hold  </option>
-                         <option value="Business"> Business  </option>
-                         <option value="Education"> Education  </option>
-                         <option value=" Corporate_Offices"> Corporate Offices  </option>
-                         <option value="Others"> Others</option>
-
+                     <select formControlName="usertype"   class="form-control form-control-sm"  name="usertype" id="utype" placeholder="user type"> 
+                         <option selected value="0"> -Please elect-  </option> 
+                         <option value="House_hold "> House hold  </option> 
+                         <option value="Business"> Business  </option>   
+                         <option value="Education"> Education  </option> 
+                         <option value=" Corporate_Offices"> Corporate Offices  </option>  
+                         <option value="Others"> Others</option> 
+                       
                      </select>
-
+                    
+                 </div>
+                 <div *ngIf="signupForm.get('usertype').hasError('required')  && signupForm.get('usertype').touched " class="alert alert-danger">
+                  usertype is required
                 </div>
-                    <div *ngIf="signupForm.get('usertype').hasError('required')  && signupForm.get('usertype').touched " class="alert alert-danger">
-                        usertype is required
-                    </div>
+                
+                <div class="form-group ">
+                  
+                  <input type="text"  formControlName="username"  name="username"  class="form-control form-control-sm"  placeholder="username">
+                </div>
+                <div *ngIf="signupForm.get('username').hasError('required')  && signupForm.get('username').touched " class="alert alert-danger">
+                  username is required
+                </div>
 
                 <div class="form-group ">
-
-                  <input type="text"  formControlName="username"  name="username"  class="form-control form-control-sm"  placeholder="Username">
+                
+                  <input type="password"  formControlName="password"  name="password"  class="form-control form-control-sm" placeholder="Password">
                 </div>
-                      <div *ngIf="signupForm.get('username').hasError('required')  && signupForm.get('username').touched " class="alert alert-danger">
-                        username is required
-                      </div>
-
-                <div class="form-group ">
-                      <input type="password"  formControlName="password"  name="password"  class="form-control form-control-sm" placeholder="Password">
+                <div *ngIf="signupForm.get('password').hasError('required')  && signupForm.get('password').touched  " class="alert alert-danger">
+                  password is required
                 </div>
-                      <div *ngIf="signupForm.get('password').hasError('required')  && signupForm.get('password').touched  " class="alert alert-danger">
-                          password is required
-                       </div>
-                       <div *ngIf="signupForm.get('password').hasError('password') " class="alert alert-danger">
-                           password  must be 8 characters required
-                       </div>
+                <div *ngIf="signupForm.get('password').hasError('password') " class="alert alert-danger">
+                  password  must be 8 characters required
+                </div>
 
                 <div class="form-group">
-                         <input type="text"  formControlName="email"  name="email"  class="form-control form-control-sm"  placeholder="Email">
+                  
+                  <input type="text"  formControlName="email"  name="email"  class="form-control form-control-sm"  placeholder="Email">
                 </div>
-                      <div *ngIf="signupForm.get('email').hasError('required')  && signupForm.get('email').touched " class="alert alert-danger">
-                        email is required
-                      </div>
-
+                <div *ngIf="signupForm.get('email').hasError('required')  && signupForm.get('email').touched " class="alert alert-danger">
+                  email is required
+                </div>
+                
                 <div class="form-group">
-                         <input type="text"  formControlName="phone"  name="phone"  class="form-control form-control-sm" id="exampleInputPassword1" placeholder="Phone">
+                
+                  <input type="text"  formControlName="phone"  name="phone"  class="form-control form-control-sm" id="exampleInputPassword1" placeholder="Phone">
                 </div>
-                      <div *ngIf="signupForm.get('phone').hasError('required')  && signupForm.get('phone').touched " class="alert alert-danger">
-                              phone is required
-                       </div>
-
-                <div class="">
-                  <button type="submit" class="btn btn-success btn-block">Sign Up</button>
+                <div *ngIf="signupForm.get('phone').hasError('required')  && signupForm.get('phone').touched " class="alert alert-danger">
+                  phone is required
                 </div>
 
-
-           </form>
-       </div>
-       </div>
-            <div class="col-md-4 col-sm-4 col-xs-12"></div>
-       </div>
-
-
+                <div class=""></div>
+                
+               <button type="submit" class="btn btn-success btn-block">Sign Up</button>
+             </form>
+       </div> 
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-12"></div>
+          </div>
+          
+    
       </div>
     </div>
-
+    
+  

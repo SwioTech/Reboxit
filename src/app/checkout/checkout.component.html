@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div class="">
 
   <div class="container">
@@ -20,13 +22,13 @@
                 <a class="nav-link" routerLink="/myaccount" >My Account</a>
            </li>
              <li class="nav-item  poi">
-                  <a class="nav-link" routerLink="/cart"><i class="fas fa-shopping-cart"></i></a>
+                  <a class="nav-link" routerLink="/cart"><i class="fas fa-shopping-cart"></i>{{cm}}</a>
              </li>
            <li class="nav-item  poi">
               <a class="nav-link" >Help</a>
          </li>
          <li class="nav-item  poi">
-            <a class="nav-link" routerLink="/design" >Logout</a>
+            <a class="nav-link" (click)="logout()" >Logout</a>
        </li>
          <li class="nav-item  poi">
               <a class="nav-link" ><i class="fas fa-phone"></i></a>
@@ -36,10 +38,6 @@
   </nav>
 
   <!---order summary------>
-  <div class="" style="padding:20px 0 0 0;">
-    <h4 class="text-center">Order Summary</h4>
-    <p class="text-center" style="padding:20px 0 0 0;font-size:16px;">By clicking the 'Confirm Pickup and Checkout' button , you agree to Reboxit.in privacy notice and conditions of use. </p>
-  </div>
    
      <div class="" style="padding:20px 0 0 0;">
        <div class="row">
@@ -47,28 +45,27 @@
           <div class="col-md-6 sec">
               <h5>Personal Information</h5><span style="float:right;"><a routerLink="">Add or Change</a></span>
 
-              <p>Name :</p>
-              <p>Phone:</p>
-              <p>MailId:</p>
-              <p>Address:</p>
+              <p>Name :{{name}}</p>
+              <p>Phone:{{phone}}</p>
+              <p>MailId:{{email}}</p>
+              <p>Address:{{address}}</p>
+              <p>Alternate Number: {{alter}}</p>
            </div>
            <div class="col-md-3"></div> 
 
        </div>
        
      </div>
-
 <!-----scrape details---------------->
-
      <div class="" style="padding:20px 0 0 0;">
         <div class="row">
           <div class="col-md-3"></div>
            <div class="col-md-6 sec">
                <h6>Scrape Details:</h6><span style="float:right;"><a routerLink="">Add or Change</a></span>
 
-               <p>Selected slot : 16/12/2019</p>
-               <p>Estimarted Quantity : 25kg</p>
-               <p>Estimarted Price : 250 /-</p>
+               <p>Selected slot : {{slot}}</p>
+               <p>Estimarted Quantity : {{totalkg}}</p>
+               <p>Estimarted Price : {{totalamt}}</p>
                
             </div>
             <div class="col-md-3"></div> 
@@ -78,101 +75,93 @@
       </div>
 
 <!-------cash payment------->
+<!-------cash payment------->
 
-      <div class="" style="padding:20px 0 0 0;">
-          <div class="row">
-            <div class="col-md-3"></div>
-             <div class="col-md-6 sec">
-                 <h5 class="text-center">How do you want us to pay ??</h5> <span style="float:right;"><a routerLink="">Add or Change</a></span>
-              <div class="" style="padding:30px 0 0 0;">
+<div class="" style="padding:20px 0 0 0;">
+    <div class="row">
+      <div class="col-md-3"></div>
+       <div class="col-md-6 sec">
+           <h5 class="text-center">How do you want us to pay ??</h5> <span style="float:right;"><a routerLink="">Add or Change</a></span>
+        <div class="" style="padding:30px 0 0 0;">
 
-                   <p style="color:black;">
-                      <i class="fas fa-money-check"></i>
-                      <a  style="padding:0 0 0 35px;" (click)="showBank()">
-                       Bank
-                      </a>
-                   </p>
-                   <div *ngIf="bank">
-                      <div class="form-row align-items-center">
-                           <div class="col-sm-3 my-1">
-                           
-                             <input type="text" class="form-control form-control-sm" id="inlineFormInputName" placeholder="Name">
-                           </div>
-                          
-                              <div class="col-sm-3 my-1">
-                                
-                                  <input type="text" class="form-control form-control-sm" id="inlineFormInputName" placeholder="Bank Name">
-                            </div>
-                            <div class="col-sm-3 my-1">
-                                
-                                <input type="text" class="form-control form-control-sm" id="inlineFormInputName" placeholder="Acc No">
-                          </div>
-                             
-                             
-                            <div class="col-sm-3 my-1">
-                                
-                                <input type="text" class="form-control form-control-sm" id="inlineFormInputName" placeholder="Ifsc">
-                              </div>
-                             
-                           
-                      </div>
-                   </div>
-
-                   <p style="padding:0 0 0 51px" >
-                      <a  (click)="showUpi()">
-                       <img src="../../assets/login/upi.png" width="60px" height="30px" >
-                      </a>
-
-                      
-                  </p>
-                  <div *ngIf="upi">
-                     <div class="form-row align-items-center">
-                          <div class="col-sm-3 my-1">
-                            <label class="sr-only" for="inlineFormInputName">Name</label>
-                            <input type="text" class="form-control form-control-sm" id="inlineFormInputName" placeholder="Enter UPI number">
-                          </div>
-                         
+             <p style="color:black;">
+                <i class="fas fa-money-check"></i>
+                <a  style="padding:0 0 0 35px;" (click)="showBank()">
+                 Bank
+                </a>
+             </p>
+             <div *ngIf="bank">
+                <div class="form-row align-items-center">
+                     <div class="col-sm-3 my-1">
+                     
+                       <input type="text" class="form-control form-control-sm" id="acname" placeholder="Name">
                      </div>
-                  </div>
-
-                  <p style="padding:0 0 0 51px">
-                    <a (click)="showPaytm()">   
-                      <img src="../../assets/login/paytm.png" width="60px" height="30px" >
-                    </a>
-          
-                  </p>
-                  <div *ngIf="paytm">
-                      <div class="form-row align-items-center">
-                           <div class="col-sm-3 my-1">
-                             <label class="sr-only" for="inlineFormInputName">Name</label>
-                             <input type="text" class="form-control form-control-sm" id="inlineFormInputName" placeholder="Enter paytm number">
-                           </div>
+                    
+                        <div class="col-sm-3 my-1">
                           
+                            <input type="text" class="form-control form-control-sm" id="acbank" placeholder="Bank Name">
                       </div>
-                   </div>
+                      <div class="col-sm-3 my-1">
+                          
+                          <input type="text" class="form-control form-control-sm" id="acno" placeholder="Acc No">
+                    </div>
+                       
+                       
+                      <div class="col-sm-3 my-1">
+                          
+                          <input type="text" class="form-control form-control-sm" id="acifsc" placeholder="Ifsc">
+                        </div>
+                </div>
+             </div>
 
-                   <p style="color:black;">
-                     <img src="../../assets/login/cash2.png" width="50px" height="30px" >
-                      <span style="padding:0 0 0 5px;"> Cash </span>
-                  </p>
-            
-              
-              </div>
-           
-                
-              </div>
-              
-              <div class="col-md-3"></div> 
- 
-          </div>
+             <p style="padding:0 0 0 51px" >
+                <a  (click)="showUpi()">
+                 <img src="../../assets/login/upi.png" width="60px" height="30px" >
+                </a>
+            </p>
+            <div *ngIf="upi">
+               <div class="form-row align-items-center">
+                    <div class="col-sm-3 my-1">
+                      <label class="sr-only" for="inlineFormInputName">Name</label>
+                      <input type="text" class="form-control form-control-sm" id="upino" placeholder="Enter UPI number">
+                    </div>
+               </div>
+            </div>
+
+            <p style="padding:0 0 0 51px">
+              <a (click)="showPaytm()">   
+                <img src="../../assets/login/paytm.png" width="60px" height="30px" >
+              </a>
+    
+            </p>
+            <div *ngIf="paytm">
+                <div class="form-row align-items-center">
+                     <div class="col-sm-3 my-1">
+                       <label class="sr-only" for="inlineFormInputName">Name</label>
+                       <input type="text" class="form-control form-control-sm" id="paytmno" placeholder="Enter paytm number">
+                     </div>
+                    
+                </div>
+             </div>
+
+             <p style="color:black;" (click)="showCash()">
+               <img src="../../assets/login/cash2.png" width="50px" height="30px" >
+                <span style="padding:0 0 0 5px;"> Cash </span>
+            </p>
+      
+        
+        </div>
+     
           
         </div>
-
-    <!----upi-->
-    <div class="text-center" style="padding:20px 0 0 0">
-        <button class=" btn btn-success">Checkout</button>
-      </div>
-       
- 
-
+        <div class="col-md-3"></div> 
+    </div>
+    
   </div>
+
+<!----upi-->
+<div class="text-center" style="padding:20px 0 0 0">
+  <button class=" btn btn-success" (click)="submitData()">Checkout</button>
+</div>
+ 
+</div>

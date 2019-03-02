@@ -41,12 +41,20 @@ export class SignupComponent implements OnInit {
     .then((res)=>{
       console.log("authentication created");
       var details=this.signupForm.value;
-      details["uid"]=this.authService.getUserId();
       details["role"]="user";
       const obj=this.db.collection('user_website').add(details)
       .then((res) => {
         console.log("data uploaded");
-        this.router.navigate(['/design']);
+        this.db.collection("user_website", ref => ref.where("email","==",this.signupForm.value.email)).snapshotChanges().
+        subscribe(resu => {
+          console.log("resu",resu);
+          var k=resu[0].payload.doc.data();
+          var id=resu[0].payload.doc.id;
+          k["id"]=id;
+          localStorage.setItem("user",JSON.stringify(k));
+          this.router.navigate(['/design']);
+
+        });
     })
       .catch((err) =>  { console.log(err);});
     })

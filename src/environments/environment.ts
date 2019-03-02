@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase :{
-    apiKey: "AIzaSyCvyA8nGIUQ0-omDP11SLJq_N3nndF-cbw",
-    authDomain: "reboxit-c3fb2.firebaseapp.com",
-    databaseURL: "https://reboxit-c3fb2.firebaseio.com",
-    projectId: "reboxit-c3fb2",
-    storageBucket: "reboxit-c3fb2.appspot.com",
-    messagingSenderId: "405707507293"
+    apiKey: "AIzaSyDgk8qQ8YPHirUatVaKkhac_QMV-vvL0p8",
+    authDomain: "reboxit-504d8.firebaseapp.com",
+    databaseURL: "https://reboxit-504d8.firebaseio.com",
+    projectId: "reboxit-504d8",
+    storageBucket: "reboxit-504d8.appspot.com",
+    messagingSenderId: "947460326724"
   }
 };
 

@@ -1,0 +1,98 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div class="w3-sidebar w3-card w3-bar-block w3-black" style="width:15%">
+  <h1>Reboxit</h1>
+  <a  routerLink="/admin" class="w3-bar-item w3-button">User Pickups</a>
+  <a  routerLink="/adminsdreqaggre" class="w3-bar-item w3-button">Scrap Dealer Request</a>
+  <a  routerLink="/adminaggrereqrec" class="w3-bar-item w3-button">Aggregator Request</a>
+  <a  routerLink="/adminrec" class="w3-bar-item w3-button">Recycler Request</a>
+  <a  routerLink="/createsubs" class="w3-bar-item w3-button">Create subcategories</a>
+  <a  routerLink="/addlocation" class="w3-bar-item w3-button">Add a new location</a>
+  <a  routerLink="/addslot" class="w3-bar-item w3-button">Manage Slots</a>
+  <a  routerLink="/viewsd" class="w3-bar-item w3-button">View SDs </a>
+  <a  routerLink="/viewaggre" class="w3-bar-item w3-button">View Aggregators</a>
+  <a  routerLink="/viewrec" class="w3-bar-item w3-button">View Recyclers</a>
+  <a  (click)="logout()" class="w3-bar-item w3-button">logout</a>
+
+</div>
+
+<div style="margin-left:15%">
+
+    <header class="w3-container w3-dark-grey text-center">
+      <h1>Add a Category/Subcategory</h1>
+    </header>
+
+    <h4 class="text-center">Create a Category</h4>
+    <div class="container d-flex justify-content-center bg-dark text-white">
+      <div class="col-md-6 col-lg-6">
+        <form [formGroup]="cat" (ngSubmit)="createCat()">
+            <div class="form-row col-md-12">
+                <div class="form-group col-md-6">
+                    <label for="cat">Category</label>
+                        <input type="text" id="cat" class="form-control" formControlName="cat">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="catthumb">Thumbnail</label>
+                    <input type="file" id="catthumb" class="form-control" formControlName="catthumb" (change)="upfilescat($event)">
+                </div>
+            </div>
+            <div class="form-row justify-content-center">
+                <button class="btn btn-primary" [disabled]="checkcat()">Submit</button>  
+            </div>
+          </form>          
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <h4 class="text-center">Create a subcategory</h4>
+
+      <div class="container d-flex justify-content-center bg-primary text-white">
+          <div class="col-md-10 col-lg-10">
+
+            <form [formGroup]="subcat" (ngSubmit)="createSubcat()">
+                <div class="form-row col-md-12">
+                    <div class="form-group col-md-3">
+                        <label for="category">Category</label>
+                            <select id="category" formControlName="category" class="form-control">
+                              <option *ngFor="let m of listOfCategories" value={{m}}>{{m}}</option>
+                            </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="subcatname">Subcategory Name</label>
+                        <input type="text" id="subcatname" class="form-control" formControlName="subcatname">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="price">Price</label>
+                        <input type="number" id="price" class="form-control" formControlName="price">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="thumbsubcat">Thumbnail</label>
+                        <input type="file" id="thumbsubcat" class="form-control" formControlName="subthumb" (change)="upfilesubcat($event)">
+                    </div>
+                  </div>
+                <div class="form-row justify-content-center">
+                    <button class="btn btn-info" [disabled]="checksubcat()" id="subsub">Submit</button>  
+                </div>
+              </form>          
+            </div>
+        </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

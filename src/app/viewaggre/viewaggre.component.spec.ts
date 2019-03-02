@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MyaccountComponent } from './myaccount.component';
+import { ViewaggreComponent } from './viewaggre.component';
 
-describe('MyaccountComponent', () => {
-  let component: MyaccountComponent;
-  let fixture: ComponentFixture<MyaccountComponent>;
+describe('ViewaggreComponent', () => {
+  let component: ViewaggreComponent;
+  let fixture: ComponentFixture<ViewaggreComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MyaccountComponent ]
+      declarations: [ ViewaggreComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MyaccountComponent);
+    fixture = TestBed.createComponent(ViewaggreComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

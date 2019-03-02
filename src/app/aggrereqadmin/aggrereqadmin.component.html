@@ -1,0 +1,48 @@
+<div class="container bg-info col-lg-12">
+    <div class="text-center h1" style="color:white;">{{companyname}}
+    </div>
+</div>
+<div class="container-fluid mh-100">
+    <div class="row">
+      <div class="col-sm-2 col-lg-2 bg-dark">
+        <nav class="navbar navbar-default navbar-fixed-side" style="min-height:100vh">
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/myaccount-aggre">My Account</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/aggregator">Pickups</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/aggrereqadmin">Request Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/allotedtoaggre">Alloted Associate</a>
+                </li>
+                <li class="nav-item">
+                      <a class="nav-link active" routerLink="" (click)="logout()">Logout</a>
+                </li>
+              </ul>
+        </nav>
+      </div>
+      <div class="col-sm-10 col-lg-10">
+          <div class="d-flex justify-content-center align-items-center container card bg-dark text-white" >
+              <form [formGroup]="pickupForm" class="form-horizontal col-md-8">
+                    <div *ngFor="let p of prods" class="form-group row pt-2">
+                        <label class="control-label col-sm-2" for="{{p}}">{{p}}</label>
+                        <div class="col-sm-10">
+                          <input class="form-control" formControlName="{{p}}" type="number" [(ngModel)]="cart[p]">
+                        </div>
+                        
+                    </div>
+                      <div class="text-center">  
+                        <button type="submit" class="btn btn-success" (click)="onSubmit()" [disabled]="!pickupForm.valid">
+                        Proceed
+                        </button>
+                      </div>
+                </form>
+           </div>
+      </div>
+    </div>
+  </div>

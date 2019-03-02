@@ -1,8 +1,8 @@
-
+ 
 <div class="main-height">
   <div class="container">
      <a routerLink="/landing"> <img src="../assets/images/Categories/logo1.png"></a>
-
+   
   </div>
   <!-----Navigation Starts Here-->
 
@@ -11,7 +11,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
+  
     <div class="collapse navbar-collapse  drag" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto ">
         <li class="nav-item poi">
@@ -23,6 +23,9 @@
         <li class="nav-item poi">
             <a class="nav-link" (click)="showSignup()">SignUp</a>
        </li>
+       <li class="nav-item poi">
+        <a class="nav-link" routerLink="/signupadmin">Admin Signup</a>
+        </li>
          <li class="nav-item poi">
               <a class="nav-link" (click)="showAsso()">Associates</a>
          </li>
@@ -30,72 +33,90 @@
           <a class="nav-link" >Help</a>
      </li>
      <li class="nav-item poi">
-          <a class="nav-link rotate" ><i class="fas fa-phone"></i></a>
+          <a class="nav-link" ><i class="fas fa-phone"></i></a>
       </li>
       </ul>
-
+    
     </div>
   </nav>
-
+  
   <!---Form Starts Here-->
 
   <div class="bg">
     <div class="">
 
-
+     
     </div>
       <div class="row">
           <div class="col-md-4 col-sm-4 col-xs-12"></div>
           <div class="col-md-4 col-sm-4 col-xs-12 add">
-
-
+          
+      
      <!---Login Form starts here-->
-<div class=""> <h2 class="text-center" style="color:white;">Login</h2>
-           <!-- <div class=""> -->
-              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-container">
-
+            <div class="">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-container">
+                    <div class="alert alert-danger" *ngIf="error">
+                        <strong>{{error}}</strong>
+                      </div>
+                   
                     <div class="form-group">
-                       <input type="text" formControlName="email"  class="form-control form-control-sm" placeholder="Enter email"/>
+                       
+                        <input type="text" formControlName="email"  class="form-control form-control-sm" placeholder="enter email"/>
                     </div>
-                  <!------validations-->
-                        <div *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched" class="alert alert-danger">
-                             email is required
-                        </div>
-                        <div *ngIf="loginForm.get('email').hasError('email') " class="alert alert-danger">
-                          email is invalid
-                        </div>
-                   <!---------->
-                   <div class="form-group">
-                       <input type="password" formControlName="password" class="form-control form-control-sm" placeholder="Enter password"   />
-                   </div >
-                   <p style="float:right;"><a routerLink="/forgot" style="font-size:16px;color:black;float: right;text-decoration:none;">Forgot Password?</a></p>
 
-                   <!------validations-->
-                         <div *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched" class="alert alert-danger">
-                             password required
-                         </div>
-                        <div *ngIf="loginForm.get('password').hasError('minlength')  " class="alert alert-danger">
-                            password must be 8 characters
-                        </div>
-                      <!-------->
-
-                    <div class="text-center" >
-                         <button type="submit" class="btn btn-success btn-sm btn-block" >
-                             <a routerLink="/myaccount" style="color:white;text-decoration: none;">Log In</a>
-                         </button>
+                    <div *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched" class="alert alert-danger">
+                            email is required
                     </div>
+                    <div *ngIf="loginForm.get('email').hasError('email') " class="alert alert-danger">
+                        email is invalid
+                   </div>
+                    <div class="form-group">
+                        
+                        <input type="password" formControlName="password" class="form-control form-control-sm" placeholder="enter password"   />
+                     </div >
+                  
+                  <div *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched" class="alert alert-danger">
+                           password required
+                  </div>
+                  <div *ngIf="loginForm.get('password').hasError('minlength')  " class="alert alert-danger">
+                      password must be 8 characters
+                 </div>
+                   
+                    
+                  
+               
+                  <div class="text-center" >
+                      <button type="submit" class="btn btn-success btn-sm btn-block" >
+                          Log In
+                      </button>
+                     
+                  </div>
+                  
+                  <div class="">
+                    <p style="padding: 10px 0 0 0;" >want to create an account ?<span><a routerLink="/signup" style="color:green;text-decoration: none;">SignUp</a></span></p>
+                  </div>
 
                   <div class="">
-                    <p style="padding: 10px 0 0 0;font-size:16px;" >Want to create an account ?<span><a routerLink="/signup" style="color:green;text-decoration: none;"> SignUp</a></span></p>
+                    <p><a routerLink="/forgot" style="color:green;float: right;text-decoration:none;">Forgot Password?</a></p>
                   </div>
-            </form>
+                  <!-- <div class="text-center" style="padding: 9px 0 0 0;">
+                      <button type="submit" class="btn btn-success ">
+                             <a routerLink="/scrape" style="color:white;">Ass-Log In</a>
+                      </button>
+                 </div> -->
 
+                 </form>
+               
                 </div>
+
               </div>
-            <div class="col-md-4 col-sm-4 col-xs-12"></div>
+              <div class="col-md-4 col-sm-4 col-xs-12"></div>
           </div>
-       </div>
+          
+    
+      </div>
     </div>
-
-
-
+    
+   
+            
+          

@@ -1,0 +1,111 @@
+<div class="">
+  <div class="container">
+    <a routerLink="/landing"> <img src="../assets/images/Categories/logo1.png"></a>
+ </div>
+<!-----Navigation Starts Here-------------------->
+    
+<nav class="navbar navbar-expand-sm navbar-light bg1">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse  drag" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto ">
+          <li class="nav-item poi">
+            <a class="nav-link" routerLink="/pricelist">Price List <span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item poi">
+            <a class="nav-link" routerLink="/pickup">Pickup<span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item  poi">
+              <a class="nav-link" routerLink="/myaccount-user" >My Account</a>
+         </li>
+           <li class="nav-item  poi">
+                <a class="nav-link" routerLink="/cart"><i class="fas fa-shopping-cart"></i></a>
+         </li>
+         <li class="nav-item  poi">
+          <a class="nav-link" (click)="logout()" >Logout</a>
+        </li>
+    </ul>
+  </div>
+</nav>
+<div class="row pt-4" >
+  <div class="col-md-4 col-lg-4">
+    <div class="card">
+          <div class="card-header">
+            User Details
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Username : {{user["username"]}}</li>
+            <li class="list-group-item">Phone no : {{user["phone"]}}</li>
+            <li class="list-group-item">Usertype : {{user["usertype"]}}</li>
+            <li class="list-group-item">E Mail : {{user["email"]}}</li>
+          </ul>
+    </div>
+  </div>
+  <div class="col-md-8 col-lg-8">
+    <div class="font-weight-bold text-center text-uppercase text-primary">history</div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <th>Address</th>
+            <th>Slot</th>
+            <th>Total Scrap</th>
+            <th>Total Amount</th>
+            <th>Status</th>
+            <th>View</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let k of history;let idx=index">
+              <td>{{k["address"]}}</td>
+              <td>{{k["slot"]}}</td>
+              <td>{{k["totalwt"]}} Kgs</td>
+              <td>Rs {{k["totalamt"]}}</td>
+              <td *ngIf="k['assigned']" class="text-success font-weight-bold">Assigned</td>
+              <td *ngIf="!k['assigned']" class="text-danger font-weight-bold">Pending</td>
+              <td><button class="btn btn-info" (click)="open(content,idx)">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">View Cart</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click');">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <th>
+              Category
+            </th>
+            <th>
+              Quantity
+            </th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let  g of presentcart">
+              <td>
+                {{g[0]}}
+              </td>
+              <td>
+                {{g[1]}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click');">Save</button>
+    </div>
+  </ng-template>
+

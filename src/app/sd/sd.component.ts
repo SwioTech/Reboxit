@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
 import { FormGroup ,FormControl ,FormBuilder , Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { element } from '@angular/core/src/render3/instructions';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-sd',
@@ -8,153 +12,94 @@ import { FormGroup ,FormControl ,FormBuilder , Validators} from '@angular/forms'
   styleUrls: ['./sd.component.css']
 })
 export class SdComponent implements OnInit {
+  associateDetails;
+  assignedPickups=[];
+  products=[];
+  finalcost=[];
+  productDetails={};
+  universalcart={};
+  lastIndex;
+  companyname: any;
 
-  request: boolean =false;
-  //addit : boolean =false;
-  assigned :boolean =true;
-  assPick :boolean=true;
-  viewCat:boolean=false;
-  mySheet:boolean=false;
-  addlist:boolean =false;
-  actual:boolean=false;
-
-  dataForm :FormGroup;
-
-
-
-  constructor(private formBuilder : FormBuilder) { }
-
-  ngOnInit() {
-    this.dataForm = this.formBuilder.group({
-      date: ['', Validators.required],
-      companyname: ['', Validators.required],
-      tscrape: ['', Validators.required],
-      quantity: ['', Validators.required],
-      price: ['', Validators.required],
-  });
+  constructor(private formBuilder : FormBuilder,private router:Router,private db:AngularFirestore,private modalService: NgbModal,private auth:AuthService){
   }
 
-  showRequestForm(valid:boolean){
-    this.request=true;
-    this.assigned=false;
-    this.assPick=false;
-    this.mySheet=false;
-    this.addlist=false;
-    
-    
-  }
-  // showForm(valid:boolean){
-  //   this.addit=true;
-  // }
-  showAssign(){
-    this.assigned =true;
-    this.request=false;
-    this.assPick=false;
-    this.mySheet=false;
-    this.addlist =false;
-  }
-  showPick(){
-    this.assPick=true;
-    this.assigned=false;
-    this.request=false;
-    this.mySheet=false;
-    this.addlist =false;
-  }
-  viewcat(){
-    this.viewCat=true;
-    this.actual=false;
-  }
-  close(){
-    this.viewCat=false;
-    
-  }
-  showSheets(){
-    this.mySheet=true;
-    this.assigned=false;
-    this.assPick=false;
-    this.request=false;
-    this.addlist =false;
-  }
-  addForm(){
-    this.addlist=true;
-  }
-  showActual(){
-    this.actual=true;
-    this.viewCat=false;
-  }
-  close1(){
-    this.actual=false;
-    
-  }
 
+  open(content,id) 
+  {
+    this.lastIndex=id;
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      console.log(result);
+    });
+    var cart=JSON.parse(this.assignedPickups[id].cart);
+    for(var m in this.universalcart)
+    {
+      if(cart[m])
+      this.universalcart[m]=cart[m][0];
+      else
+      this.universalcart[m]=0;
+    }
+    console.log("updated univ cart is",this.universalcart);
+  }
+  ngOnInit()
+  {
+    this.companyname=JSON.parse(localStorage.getItem("user"))["companyname"];
+    this.associateDetails=JSON.parse(localStorage.getItem("user"));
+    this.db.collection("pickup_user",ref => ref.where("assigned","==",true).where("assignedTo","==",this.associateDetails["id"]).where("collected","==",false)).snapshotChanges().subscribe(res => {
+      for(var i=0;i<res.length;i++)
+      {
+        var k=res[i].payload.doc.data();
+        k["id"]=res[i].payload.doc.id;
+        this.assignedPickups.push(k);
+        this.finalcost[i]=this.assignedPickups[i]["totalamt"];
+      }
+    });
+
+
+    this.db.collection("products").snapshotChanges().subscribe(res => {
+      for(var i=0;i<res.length;i++)
+      {
+        var cat=res[i].payload.doc.data();
+        for(var m in cat)
+        {
+          if(m.search("thumb")== -1)
+          {
+            this.productDetails[m]=cat[m];
+            this.universalcart[m]=0;
+            this.products.push(m);
+          }
+        }
+      }
+    });
+    console.log(this.products);
+    console.log(this.assignedPickups);
+  }
+  showCart()
+  {
+    console.log(this.universalcart);
+  }
+  updateCost()
+  {
+    var sum=0;
+    for (var m in this.universalcart)
+    {
+      sum=sum+this.universalcart[m]*this.productDetails[m];
+   }
+   this.finalcost[this.lastIndex]=sum;
+   this.assignedPickups[this.lastIndex]["cart"]=this.universalcart;
+  }
+  async submit(k)
+  {
+    this.assignedPickups[k]["collected"]=true;
+    this.assignedPickups[k]["cart"]=JSON.stringify(this.assignedPickups[k]["cart"]);
+    this.assignedPickups[k]["totalamt"]=this.finalcost[k];
+    await this.db.doc("pickup_user/"+this.assignedPickups[k].id).update(this.assignedPickups[k]).then(function(){
+      console.log("successful");
+    });
+     window.location.reload();
+  }
+  logout()
+  {
+    this.auth.logout();
+  }
 }
-
-
-/**
- *                   <div class="col-md-12">
-                    <div class="card">
-                      <!-- <div class="card-header">
-                        <h4 class="card-title"> User data</h4>
-                      </div> -->
-                      <div class="card-body">
-                        <div class="table-responsive">
-                          <table class="table table-small">
-                            <thead class="" >
-                              <th>
-                                Name
-                              </th>
-                              <th>
-                                  Address
-                              </th>
-                              <th>
-                                  Phone Number
-                              </th>
-                              <th>
-                                  Estimated kg
-                                  
-                              </th>
-                              <th>
-                                  Actual kg
-                              </th>
-                              <th>
-                                  Date
-                              </th>
-                              <th>
-                                 Actions
-                              </th>
-                              
-                            </thead>
-                            <tbody  >
-                              <tr>
-                                <td>
-                                    vamshi
-                                </td>
-                                <td>
-                                    ramnagar
-                                </td>
-                                <td>
-                                    9966558822
-                                </td>
-                                <td>
-                                    6 <br>
-                                    <button (click)=viewcat()>view Categories</button>
-                                </td>
-                                <td>
-                                    -
-                                </td>
-                               <td>
-                                 10/2/2018
-                               </td>
-                               <td>
-                                 <button class="btn btn-success">update</button>
-                               </td>
-                              </tr>
-                             
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
- * 
- */

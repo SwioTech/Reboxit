@@ -1,0 +1,83 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div class="w3-sidebar w3-card w3-bar-block w3-black" style="width:15%">
+  <h1>Reboxit</h1>
+  <a  routerLink="/admin" class="w3-bar-item w3-button">User Pickups</a>
+  <a  routerLink="/adminsdreqaggre" class="w3-bar-item w3-button">Scrap Dealer Request</a>
+  <a  routerLink="/adminaggrereqrec" class="w3-bar-item w3-button">Aggregator Request</a>
+  <a  routerLink="/adminrec" class="w3-bar-item w3-button">Recycler Request</a>
+  <a  routerLink="/createsubs" class="w3-bar-item w3-button">Create subcategories</a>
+  <a  routerLink="/addlocation" class="w3-bar-item w3-button">Add a new location</a>
+  <a  routerLink="/addslot" class="w3-bar-item w3-button">Manage Slots</a>
+  <a  routerLink="/viewsd" class="w3-bar-item w3-button">View SDs </a>
+  <a  routerLink="/viewaggre" class="w3-bar-item w3-button">View Aggregators</a>
+  <a  routerLink="/viewrec" class="w3-bar-item w3-button">View Recyclers</a>
+  <a  (click)="logout()" class="w3-bar-item w3-button">logout</a>
+
+</div>
+
+<div style="margin-left:15%">
+
+    <header class="w3-container w3-dark-grey text-center">
+      <h1>Add a slot</h1>
+    </header>
+    <div class="container d-flex justify-content-center bg-dark text-white">
+      <div class="col-md-6 col-lg-6">
+        <form [formGroup]="slot" (ngSubmit)="submit()">
+
+
+
+            <div class="form-row col-md-12">
+                <div class="form-group col-md-6">
+                    <label for="location">Location</label>
+                        <select id="location" formControlName="location" class="form-control">
+                          <option *ngFor="let m of location" value={{m}}>{{m}}</option>
+                        </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="slot">Location</label>
+                    <input type="date" id="slot" class="form-control" formControlName="date">
+                </div>
+            </div>
+            <div class="form-row justify-content-center">
+                <button class="btn btn-primary" [disabled]="!slot.valid">Submit</button>  
+            </div>
+          </form>          
+    </div>
+  </div>
+
+
+  <div class="table-responsive mt-4">
+    <table class="table">
+      <thead class="thead-dark">
+        <th>Location</th>
+        <th>Date(YYYY-MM-DD)</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mew of listOfSlots;let idx=index">
+          <td>{{mew["location"]}}</td>
+          <td>{{mew["date"]}}</td>
+          <td><button class="btn btn-danger" (click)="deleteSlot(idx)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

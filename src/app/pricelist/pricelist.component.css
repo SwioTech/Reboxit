@@ -2,11 +2,11 @@
 
     .bg1{
         background: #3d882f;
-    }
+    }    
 .drag ul li a{
     color:white;
-    font-size: 16px;
-    padding: 0 30px;
+    font-size: 18px;
+    padding: 0 15px;
 }
 .poi{
     cursor: pointer;
@@ -14,12 +14,4 @@
 .navy li{
     display: inline-block;
     padding: 30px;
-}
-
-.rotate {
-  transform: rotate(100deg);
-}
-
-.navy{
-
 }

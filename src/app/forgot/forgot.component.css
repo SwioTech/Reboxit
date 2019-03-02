@@ -10,13 +10,13 @@
 
     }
     .bg1{
-        background: #3d882f;
+        background: #005f33;
     }
 
 .drag ul li a{
         color:white;
-        font-size: 16px;
-        padding: 0 30px;
+        font-size: 14px;
+        padding: 0 15px;
 }
 
 /* container of background*/
@@ -25,7 +25,7 @@
     padding: 50px 60px ;
     margin-top: 30px;
    background: white;
-   /* opacity: 0.5; */
+   opacity: 0.5;
 
 }
 .add{
@@ -33,10 +33,5 @@
 }
 .poi{
     cursor:pointer;
-}
-
-h2{
-  padding-top: 50px;
-
 }
 

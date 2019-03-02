@@ -7,9 +7,6 @@
               
              </div>
         </div>
-        <div class="col-md-4 col-sm-4 col-xs-12">
-         <p>Scrape Dealer / Aggregator/ Recycler</p>
-        </div>
 
     </div>
 
@@ -23,394 +20,92 @@
        </button>
      
        <div class="collapse navbar-collapse  drag" id="navbarSupportedContent">
-         <h4>Company Name</h4>
+         <h4>{{companyname}}</h4>
          <ul class="navbar-nav ml-auto ">
+            
+            <li class="nav-item poi">
+                <a class="nav-link" routerLink="/myaccount-sd" ><p id="size">My Account</p></a>
+            </li>
 
-            <!-- <li class="nav-item poi" >
-                <a class="nav-link active" (click)="showAssign()"> <p id="size">Notifications</p> </a>
-              </li> -->
-              <li class="nav-item poi">
-                  <a class="nav-link" (click)="showPick()" ><p id="size">Assigned pickups</p></a>
-                </li>
-              <li class="nav-item poi">
-                <a class="nav-link" (click)=" showRequestForm()"><p style="font-size:18px;">Request Admin</p></a>
-              </li>
-              <li class="nav-item poi">
-                <a class="nav-link" > <p style="font-size:18px;">Alloted Aggregator</p></a>
-              </li>
-              <li class="nav-item poi">
-                  <a class="nav-link" (click)=" showRequestForm()"><p style="font-size:18px;">Request Aggregator</p></a>
-                </li>
-              <li class="nav-item poi">
-                  <a class="nav-link" (click)="  showSheets()"> <p style="font-size:18px;">My Sheets</p></a>
-                </li>
-             
+            <li class="nav-item poi">
+                <a class="nav-link" routerLink="/scrape" ><p id="size">Assigned pickups</p></a>
+            </li>
+            <li class="nav-item poi">
+              <a class="nav-link" routerLink="/scrapereqadmin"><p style="font-size:18px;">Request Admin</p></a>
+            </li>
+            <li class="nav-item poi">
+              <a class="nav-link" routerLink="/allotedaggre"> <p style="font-size:18px;">Alloted Aggregator</p></a>
+            </li>
+            <li class="nav-item poi">
+                <a class="nav-link" (click)="logout()"> <p style="font-size:18px;">Logout</p></a>
+            </li>
 
 
-         </ul>
+       </ul>
        
        </div>
      </nav>
+
+
      
-
-    <div class="row">
-      
-         <div class="col-sm-6 col-md-6 col-lg-10" id="secc">
-            
-
-
-  <!----notification pickups-->
-
-
-          <div class="" style="padding:20px 10px 0 0">
-            <div *ngIf="assigned">
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="card">
-                        <span style="padding:  10px 30px 10px 30px"> Assigned pickup  <button class="btn btn-success" >Accept</button></span>
-                           <div class="card-body" style="background:#fdd6b9;border:10px solid white;">
-                              <p class="card-text">
-                                <span>Address :</span><br>
-                                <span>content :</span> <br>
-                                <span>user :</span><br>
-                                <span>call :</span>
-                             </p>
-                          </div>
-                     </div>
-                </div>
-                <div class="card">
-                   
-                    <!-- <div class="card">
-                        <span style="padding:  10px 30px 10px 30px"> Assigned pickup    <button class="btn btn-success" >Accept</button></span>
-                           <div class="card-body" style="background:#fdd6b9;border:10px solid white;">
-                              <p class="card-text">
-                                <span>Address :</span><br><br>
-                                <span>content :</span> <br><br>
-                                <span>user :</span><br><br>
-                                <span>call :</span>
-                             </p>
-                          </div>
-                     </div> -->
-                     <!-- <div class="card">
-                        <span style="padding:  10px 30px 10px 30px" class="text-center"> Alloted    </span>
-                           <div class="card-body" style="background:#c7cef8;border:10px solid white;">
-                              <p class="card-text">
-                                <span>Company Name :</span><br><br>
-                                <span>Aggregator :</span> <br><br>
-                                    <span>call :</span>
-                             </p>
-                          </div>
-                     </div> -->
-              </div>
-
-            </div>
-          </div>
-
-
-<!-----assigned pickups-->
-
-
-         <div class="" style="padding:0 0 0 10px;">
-           <div *ngIf="assPick">
-              <div class="row" >
-                  <table class="table">
-                      <thead class="thead">
-                        <tr>
-                          <th scope="col">  Date</th>
-                          <th scope="col">  Name</th>
-                          <th scope="col">  Address</th>
-                          <th scope="col">  Phone No.</th>
-                          <th scope="col">  Payment </th>
-                          <th scope="col">  Quantity</th>
-                          <th scope="col">  Price</th>
-                          <th scope="col">  Status</th>
-                        
-                        </tr>
-                     
-                      <tbody>
-                        <tr>
-                          <td>1/2/2019</td>
-                          <td>Mark</td>
-                          <td>ramnagar</td>
-                          <td>9565655565</td>
-                          <td>Cash</td>
-                          <td>250 kg<br>
-                            <span><a (click)="viewcat()" style="color:orange;">Edit categories</a></span>
-                         <!-----view categories-->
-                          <div class="" *ngIf="viewCat" >
-                              <div class="" style="border:1px solid">
-                                  <div class="col-md-3 " ></div>
-                                    <div class="col-md-3 " >
-                                      <div class="table table-sm" >
-                                          <thead>
-                                            <tr  class="cat">
-                                              <th class="gg">Category</th>
-                                              <th class="gg">Subcategory</th>
-                                              <th class="gg">Quantity</th>
-                                              <th class="gg">Actual</th>
-                                              <th  class="gg">Price</th>
-                                              
-                                            </tr>
-                                          </thead>
-                                        
-                                     <tbody>
-                                            <tr>
-                                              <td rowspan="3">Plastic</td>
-                                              <td>plastic bags</td>
-                                              <td>66</td>
-                                              </tr>
-
-                                            <tr>
-                                             <td>plastic bags</td>
-                                             <td>66</td>
-                                           </tr>
-
-                                            <tr>
-                                              <td>plastic bags</td>
-                                              <td>66</td>
-                                            </tr>
-                                            
-                                                <hr>
-                                             <tr>
-                                                 <td rowspan="3">Plastic</td>
-                                                 <td>plastic bags</td>
-                                                 <td>66</td>
-                                             </tr>
-
-                                             <tr>
-                                                <td>66</td>
-                                             </tr>
-                                             <tr>
-                                                 <td>plastic bags</td>
-                                                 <td>66</td>
-                                             </tr>
-                                                     
-                                       </tbody>
-                                      <button (click)="close()">close</button>
-                            
-                                        </div>
-                                      <div>
-                                    </div>
-                               </div>
-                              </div>
-                          </div>
- <!--------------------------------->
-                         </td>
-
-                        
-             <!------------------------->
-
-                         
-                          <td>350 /-</td>
-                          <td>Open</td>
-                        </tr>
-
-                      
-                      
-                      </tbody>
-                    </table>
-                    
-                 
-                  </div>
-
-           </div>
-         </div>
-
-  <!------request to admin------------------------->
-
-          <div class="" style="padding:0 0 0 10px;">
-                 <div *ngIf="request">
-                   <div class="col-md-2"></div>
-                    <div class="" style="display: inline-block;padding: 0 0 0 170px">
-                        <div class="card" style="width: 18rem; background:#fdd6b9;margin: 14px 61px 9px 120px;">
-                            <div class="card-body" style="padding: 0.25rem" >
-                              <h5 class="card-title text-center" (click)="viewcat()">   <i class="fas fa-plus "></i></h5>
-                              <p class="text-center">Add new request</p>
-                              
-                            </div>
-                          </div>
-                        </div>
-                      <div class="" style="display: inline-block;">
-                      <div class="card" style="width: 18rem; background:#9fe8eb;">
-                          <div class="card-body" style="padding: 0.25rem">
-                            <h5 class="card-title text-center"> Alloted</h5>
-                            <p class="text-center" style="font-size:22px;"> <b>Aggregator</b></p>
-                            
-                          </div>
-                        </div>
-                      </div>
-                   </div>
-           </div>
-
-              
-
-                   
-    <!-----------view categories----------------->
-     <div class="">
-      <div class="" *ngIf="viewCat" style="padding:0 0 0 350px;">
-        <div class="col-md-3"></div>
-      <div class="col-md-8 col-xl-9">
-             <h6 text center>Paper</h6>
-              <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                    News Papers
-                  </label>
-                  <span style="padding:0 30px;">
-                      <input type="text" name="kg"  id="input" placeholder=" kg" >
-                  </span>
-               </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        News Papers
-                      </label>
-                          <span style="padding:0 30px;">
-                             <input type="text" name="kg"  id="input" placeholder=" kg" >
-                         </span>
-                  </div>
-                  <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                      <label class="form-check-label" for="defaultCheck1">
-                          News Papers
-                        </label>
-                           <span style="padding:0 30px;">
-                             <input type="text" name="kg"  id="input" placeholder=" kg" >
-                         </span>
-                    </div>
-           </div>
-           <hr>
-           <div class="col-md-8 col-xl-9">
-              <h6 text center>Paper</h6>
-               <div class="form-check">
-                   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                   <label class="form-check-label" for="defaultCheck1">
-                     News Papers
-                   </label>
-                   <span style="padding:0 30px;">
-                       <input type="text" name="kg"  id="input" placeholder=" kg" >
-                   </span>
-                </div>
-                 <div class="form-check">
-                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                     <label class="form-check-label" for="defaultCheck1">
-                         News Papers
-                       </label>
-                           <span style="padding:0 30px;">
-                              <input type="text" name="kg"  id="input" placeholder=" kg" >
-                          </span>
-                   </div>
-                   <div class="form-check">
-                       <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                       <label class="form-check-label" for="defaultCheck1">
-                           News Papers
-                         </label>
-                            <span style="padding:0 30px;">
-                              <input type="text" name="kg"  id="input" placeholder=" kg" >
-                          </span>
-                     </div>
-            </div>
-            <hr>
-            <div class="col-md-8 col-xl-9">
-                <h6 text center>Paper</h6>
-                 <div class="form-check">
-                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                     <label class="form-check-label" for="defaultCheck1">
-                       News Papers
-                     </label>
-                     <span style="padding:0 30px;">
-                         <input type="text" name="kg"  id="input" placeholder=" kg" >
-                     </span>
-                  </div>
-                   <div class="form-check">
-                       <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                       <label class="form-check-label" for="defaultCheck1">
-                           News Papers
-                         </label>
-                             <span style="padding:0 30px;">
-                                <input type="text" name="kg"  id="input" placeholder=" kg" >
-                            </span>
-                     </div>
-                     <div class="form-check">
-                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                         <label class="form-check-label" for="defaultCheck1">
-                             News Papers
-                           </label>
-                              <span style="padding:0 30px;">
-                                <input type="text" name="kg"  id="input" placeholder=" kg" >
-                            </span>
-                       </div>
-              </div>
-              <button class="btn btn-success">Submit</button>
-          </div>
-         
-          </div>
-                   
-
-    <!------My Sheets-->
-
-
-     <div class="">
-    <div *ngIf="mySheet">
-      <div class="col-sm-5">
-        <button class="btn btn-success" (click)="addForm()"><i class="fas fa-plus">add Data</i></button>
-      </div>
-
-      
-    </div>
-    <div *ngIf="addlist" class="">
-        <div class="col-md-6 offset-md-3 ">
-            <form [formGroup]="dataForm" (ngSubmit)="onSubmit()">
-          <div class="form-group row">
-              
-              <input formControlName="" class="form-control form-control-sm" type="date" placeholder="enter date">
-          </div>
-          <div *ngIf="dataForm.get('date').hasError('required')  && dataForm.get('tscrape').touched " class="alert alert-danger">
-              usertype is required
-            </div>
-
-          <div class="form-group row">
-         
-              <input formControlName="companyname"   class="form-control form-control-sm" type="text" placeholder="Company Name">
-          </div>
-          <div *ngIf="dataForm.get('companyname').hasError('required') && dataForm.get('tscrape').touched  " class="alert alert-danger">
-              usertype is required
-            </div>
-
-          <div class="form-group row">
-              
-              <input formControlName="tscrape" class="form-control form-control-sm" type="text" placeholder="Scrape type">
-          </div>
-          <div *ngIf="dataForm.get('tscrape').hasError('required') && dataForm.get('tscrape').touched  " class="alert alert-danger">
-              Type of Scrape is required
-            </div>
-
-          <div class="form-group row">
-             
-              <input formControlName="quantity" class="form-control form-control-sm" type="text" placeholder="Quantity">
-          </div>
-          <div *ngIf="dataForm.get('quantity').hasError('required') && dataForm.get('tscrape').touched " class="alert alert-danger">
-               Quantity is required
-            </div>
-
-          <div class="form-group row">
-             
-              <input formControlName="price" class="form-control form-control-sm" type="text" placeholder="Price">
-          </div>
-          <div *ngIf="dataForm.get('price').hasError('required')  && dataForm.get('tscrape').touched " class="alert alert-danger">
-              price is required
-            </div>
-
-          <div class="">
-            <button class="btn btn-success">Submit</button>
-          </div>
-        </form>
+       <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Alternate Phone</th>
+                <th scope="col">Payment Mode</th>
+                <th scope="col">Slot</th>
+                <th scope="col">Estimated Wt</th>
+                <th scope="col">Estimated Cost</th>
+                <th scope="col">Updated Details</th>
+                <th scope="col">Final Cost</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let i of assignedPickups let idx=index">
+                <td>{{i["name"]}}</td>
+                <td>{{i["address"]}}</td>
+                <td>{{i["phone"]}}</td>
+                <td>{{i["alterphone"]}}</td>
+                <td>{{i["payment"]}}</td>
+                <td>{{i["slot"]}}</td>
+                <td>{{i["totalwt"]}} Kgs</td>
+                <td>Rs {{i["totalamt"]}}</td>
+                <td>
+                      <button class="btn btn-lg btn-outline-primary" (click)="open(content,idx)">Update</button>
+                </td>
+                <td>Rs {{finalcost[idx]}}</td>
+                <td>
+                  <button class="btn btn-lg btn-outline-info" (click)="submit(idx)">Confirm</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-    </div>
-   </div>
-    
-   </div>
-   </div>
-   
 
 
-</div>
+    <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Update Details</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click');updateCost();">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+              <div class="form-row align-items-center">
+                  <div *ngFor="let g of products let idx=index" class="col-sm-6 my-1">
+                      <label class="control-label" for="{{g}}">{{g}}</label>
+                      <input type="number" class="form-control form-control-sm" id="{{g}}" name="{{g}}" placeholder="{{g}}" [(ngModel)]="universalcart[g]" (change)="showCart()">
+                    </div>
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click');updateCost();">Save</button>
+        </div>
+     </ng-template>

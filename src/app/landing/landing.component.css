@@ -436,7 +436,6 @@
         right: 0;
         left: 0;
         margin: 0 auto;
-      
 }
 .triangle-down {
 	width: 0;
@@ -446,30 +445,13 @@
     border-top: 50px solid black;
     float: right;
 }
-.container1 {
+.container1{
     width: 768px; 
     margin: 0 auto;
 }
-#card{
-  
-  margin-left: 15%;
-   margin-right: -5%
 }
-}
-
 }
 
 .poi{
     cursor:pointer;
 }
-.section , .footer-classic {
-  background: url("/../../app/FOOTER.png") no-repeat
-  
-}
-
-#card{
-  
-  margin-left: 15%;
-   margin-right: -5%
-}
- 
